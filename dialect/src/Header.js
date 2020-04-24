@@ -8,18 +8,16 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 
-
 export default function ButtonAppBar() {
     return (
         <div>
             <AppBar position="static" color = "primary" >
                 <Toolbar style = {{marginLeft: "20%", marginRight: "20%", justifyContent:"space-between"}}>
-                    <a href = "/" style = {{  textDecoration: "none", color: "inherit", }}>
+                    <a href = "/" style = {{  textDecoration: "none", color: "inherit", display: "flex", flexDirection: "row", }}>
                         <Typography style = {{fontSize: 28, fontWeight:"bold", fontFamily:"Avenir" }}>
                             Dialect
                         </Typography>
                     </a>
-
                     <div>
                         <Button href="/" color = "inherit" variant = "h5">Home
                         </Button>

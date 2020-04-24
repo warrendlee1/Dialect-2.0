@@ -12,67 +12,82 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const feedData = [
+let feedData = [
     {
         title: "The Art of War",
         author:"Warren Lee",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://essayspirit.com/wp-content/uploads/2019/07/leadership-style-essay-1-638.jpg",
-        comments:
-            [
-                {
-                    commenter: "Bobby Johnson", 
-                    content: "What is leadership, blah blah blah blah",
-                },
-                {
-                    commenter: "Sally Brown",
-                    content: "I have a question, blah blah blah blah",
-                },
-                {
-                    commenter: "gi joe",
-                    content: "I asdf a question, blah blah blah blah",
-                }
-            ]
+        comments:[],
     },
     {
         title: "History of World",
         author:"Bobby Jones",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://essayspirit.com/wp-content/uploads/2019/06/History-essay-example.jpg",
+        comments:[],
     },
     {
         title: "Politics in America",
         author:"Anacan Mangelsdorf",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://i.pinimg.com/originals/03/3c/65/033c65d93b4ba3d93a163596fba5aeee.jpg",
+        comments:[],
     },
     {
         title: "JavaScript Programming",
         author:"Mina Hanna",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://images.examples.com/wp-content/uploads/2017/05/Advanced-Essay-Writing1.jpg",
+        comments:[],
     },
     {
         title: "Philosophy of Life",
         author:"Sally Brown",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://image.slidesharecdn.com/successdefinitionessay-110523053505-phpapp01/95/success-definition-essay-1-728.jpg?cb=1306128967",
+        comments:[],
     },
     {
         title: "World War 2",
         author:"Sammy Dawson",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         file: "https://cdn.thinglink.me/api/image/1008110833252696066/1024/10/scaletowidth",
+        comments:[],
     },
 ];
+
+
+
 
 export default class Home extends React.Component{
     constructor(){
         super()
         this.state = {
             fileId: null,
+            comments: null,
+            inputComment: null,
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
+
+    handleChange(event) {
+        this.setState({inputComment: event.target.value});
+        console.log(this.state.inputComment);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        let feedDataPrevComments = feedData[this.state.fileId].comments;
+        if (feedDataPrevComments == null || feedDataPrevComments.length == 0) {
+            feedData[this.state.fileId].comments = [{commenter: "Warren Lee", content: this.state.inputComment}];
+        } else {
+            feedData[this.state.fileId].comments.push({commenter: "Warren Lee", content: this.state.inputComment})
+        }
+        this.setState({comments: feedData[this.state.fileId].comments})
+    }
+
     render() {
         if(this.state.fileId != null) {
             return (
@@ -97,29 +112,29 @@ export default class Home extends React.Component{
                                 <CardContent style = {{flex: 1, }}>
                                     <Typography color="textSecondary" gutterBottom>Latest Activity</Typography>
                                     <div style = {{ flex: 1, height: "95%", display: "flex", flexDirection: "column", justifyContent: "space-between",}}>
-                                        <List> 
+                                        <List style = {{overflowY: 'scroll', marginBottom: "6%",}}> 
                                             {
-                                                feedData[this.state.fileId].comments === undefined ?
+                                                this.state.comments == null ?
                                                 null
                                                 :
-                                                 (feedData[this.state.fileId].comments.map((comment) => (
+                                                (this.state.comments.map((comment) => (
                                                         <div>
                                                             <ListItem alignItems="flex-start">
                                                                 <ListItemText
-                                                                primary = {comment.commenter}
-                                                                secondary={
-                                                                    <React.Fragment>
-                                                                        <Typography
-                                                                            component="span"
-                                                                            variant="body2"
-                                                                            color="textPrimary"
-                                                                        >
-                                                                        </Typography>
-                                                                        {
-                                                                            comment.content
-                                                                        }
-                                                                    </React.Fragment>
-                                                                }
+                                                                    primary = {comment.commenter}
+                                                                    secondary = {
+                                                                        <React.Fragment>
+                                                                            <Typography
+                                                                                component="span"
+                                                                                variant="body2"
+                                                                                color="textPrimary"
+                                                                            >
+                                                                            </Typography>
+                                                                            {
+                                                                                comment.content
+                                                                            }
+                                                                        </React.Fragment>
+                                                                    }
                                                                 />
                                                             </ListItem>
                                                             <Divider component="li" style = {{marginLeft: "2%", marginRight: "2%",}}/>
@@ -128,11 +143,21 @@ export default class Home extends React.Component{
                                                 )
                                             }
                                         </List>
-                                        <div style = {{display: "flex", flexDirection: "column", marginLeft: "2%", marginRight: "2%" }}>
-                                        
-
-                                            <Button style = {{backgroundColor: "rgb(65, 84, 175)", color: "white"}}>Share</Button>
-                                        </div>
+                                        <form onSubmit={this.handleSubmit} style = {{display:"flex", flexDirection:"column"}}>
+                                            <label>
+                                                <TextField
+                                                    id="standard-textarea"
+                                                    label="Comment"
+                                                    multiline
+                                                    variant="outlined"
+                                                    style = {{marginBottom: "3%", width:"100%"}}
+                                                    type="text" 
+                                                    onChange={this.handleChange}
+                                                    value = {this.state.inputComment}
+                                                />
+                                            </label>
+                                            <Button type="submit" variant="contained" color="primary">Share</Button>
+                                        </form>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -146,8 +171,24 @@ export default class Home extends React.Component{
                 <div style = {{ height: 905, marginLeft: "21.25%",display:"flex", flexDirection:"row", marginRight:"21.25%",  }}>
                     <div style = {{ width: "65%", height: "96%", marginTop: "1%",}}>
                         <Card style = {{height: "100%", overflowY: 'scroll',   }}>
-                            <CardContent style = {{marginLeft:"3%", }}>
-                                <Typography color="textSecondary" gutterBottom>Latest</Typography>
+                            <CardContent style = {{marginLeft:"3%", display: "flex", flexDirection:"row", }}>
+                                <form style = {{marginBottom: "3%",marginTop: "3%", display:"flex", flexDirection:"row",}}>
+                                    <label>
+                                        <input 
+                                            type="text" 
+                                            placeholder="Search" 
+                                            color="textSecondary"
+                                            
+                                            style = {{
+                                                fontSize: "14px",
+                                                padding: "5px",
+                                                width: "325%",
+                                            }}
+                                            // value = {}
+                                            // onSubmit = {}
+                                        />
+                                    </label>
+                                </form>
                             </CardContent> 
                             {
                                 feedData.map((item,index) =>(
@@ -155,6 +196,7 @@ export default class Home extends React.Component{
                                         <div style = {{ marginLeft: "3%", marginRight: "10%", }}>
                                             <div onClick={ () => {
                                                 this.setState({fileId: index})
+                                                this.setState({comments: (feedData[index] != null ? feedData[index].comments : null)   })
                                                 }
                                                 }>
                                                 <div style = {{display: 'flex',  flexDirection:'row'}}>

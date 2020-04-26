@@ -11,6 +11,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import firebase from './firebase';
+
+
+// const feedData = firebase.firestore();
 
 let feedData = [
     {
@@ -58,8 +62,6 @@ let feedData = [
 ];
 
 
-
-
 export default class Home extends React.Component{
     constructor(){
         super()
@@ -68,30 +70,35 @@ export default class Home extends React.Component{
             comments: null,
             inputComment: null,
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.commentBoxChange = this.commentBoxChange.bind(this);
+        this.postComment = this.postComment.bind(this); 
     }
 
-    handleChange(event) {
+    commentBoxChange(event) {
         this.setState({inputComment: event.target.value});
         console.log(this.state.inputComment);
     }
 
-    handleSubmit(event) {
+    
+
+    postComment(event) {
         event.preventDefault();
         let feedDataPrevComments = feedData[this.state.fileId].comments;
-        if (feedDataPrevComments == null || feedDataPrevComments.length == 0) {
+        if (feedDataPrevComments === null || feedDataPrevComments.length === 0) {
             feedData[this.state.fileId].comments = [{commenter: "Warren Lee", content: this.state.inputComment}];
         } else {
             feedData[this.state.fileId].comments.push({commenter: "Warren Lee", content: this.state.inputComment})
         }
-        this.setState({comments: feedData[this.state.fileId].comments})
+        this.setState({
+            inputComment: "",
+            comments: feedData[this.state.fileId].comments,
+        })
     }
 
     render() {
         if(this.state.fileId != null) {
             return (
-                <div style = {{backgroundColor: "#e8e8e8",  }}>
+                <div style = {{backgroundColor: "#e8e8e8", height: "100%",position: "absolute",left: "0",width: "100%",overflow: "scroll"}}>
                     <div style = {{ height: 905, marginLeft: "21.25%",display:"flex", flexDirection:"row", marginRight:"21.25%",  }}>
                         <div style = {{ width: "65%", height: "96%", marginTop: "1%",}}>
                             <Card style = {{height: "100%", overflowY: 'scroll',   }}>   
@@ -143,7 +150,7 @@ export default class Home extends React.Component{
                                                 )
                                             }
                                         </List>
-                                        <form onSubmit={this.handleSubmit} style = {{display:"flex", flexDirection:"column"}}>
+                                        <form onSubmit={this.postComment} style = {{display:"flex", flexDirection:"column"}}>
                                             <label>
                                                 <TextField
                                                     id="standard-textarea"
@@ -152,7 +159,7 @@ export default class Home extends React.Component{
                                                     variant="outlined"
                                                     style = {{marginBottom: "3%", width:"100%"}}
                                                     type="text" 
-                                                    onChange={this.handleChange}
+                                                    onChange={this.commentBoxChange}
                                                     value = {this.state.inputComment}
                                                 />
                                             </label>
@@ -184,8 +191,6 @@ export default class Home extends React.Component{
                                                 padding: "5px",
                                                 width: "325%",
                                             }}
-                                            // value = {}
-                                            // onSubmit = {}
                                         />
                                     </label>
                                 </form>

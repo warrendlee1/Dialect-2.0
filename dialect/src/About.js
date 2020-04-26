@@ -7,7 +7,7 @@ export default class About extends React.Component{
 
     render() {
         return ( 
-            <div style = {{backgroundColor: "#e8e8e8",}}>
+            <div style = {{backgroundColor: "#e8e8e8", height: "100%",position: "absolute",left: "0",width: "100%",overflow: "scroll"}}>
                 <div style = {{ height: 905, marginLeft: "21.25%",display:"flex", flexDirection:"row", marginRight:"21.25%",  }}>
                     <div style = {{ width: "100%", height: "60%", marginTop: "1%",}}>
                         <Card style = {{height: "100%", overflowY: 'scroll'}}>

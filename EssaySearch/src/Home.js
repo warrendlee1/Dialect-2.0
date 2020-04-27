@@ -92,7 +92,7 @@ export default class Home extends React.Component{
                                     style = {{marginLeft: "3%", marginTop: "3%",
                                     }}
                                 />
-                                <div style = {{marginLeft: "8%", marginRight: "8%", overflow:"scroll"}}>
+                                <div style = {{marginLeft: "8%", marginRight: "8%", overflow:"scroll", marginBottom: "5%"}}>
                                     <Typography style = {{fontWeight:"bold", fontSize: 20, marginBottom: "2%",}}>
                                         {this.state.essayData[this.state.currentFileId].title}
                                     </Typography>
@@ -187,7 +187,7 @@ export default class Home extends React.Component{
                             {
                                 this.state.essayData != null ? 
                                     Object.keys(this.state.essayData).map((docID) => (
-                                        <div boxShadow={0} style = {{backgroundColor:"#e8e8e8", marginRight: "5%", marginLeft: "5%", height: "20%", borderColor: "gray",display:"flex", flexDirection:"row", marginBottom: "3%"}}>
+                                        <div boxShadow={0} style = {{borderRadius: 8, backgroundColor:"#ebebeb", marginRight: "5%", marginLeft: "5%", height: "20%", borderColor: "gray",display:"flex", flexDirection:"row", marginBottom: "3%"}}>
                                             <div style = {{ marginLeft: "3%", marginRight: "10%", width: "100%" }}>
                                                 <div onClick={ () => {
                                                         this.setState({currentFileId: docID})
@@ -203,7 +203,7 @@ export default class Home extends React.Component{
                                                 <Typography style = {{fontStyle:"italic", marginBottom: "2%"}}>
                                                     by {this.state.essayData[docID].authorFirstName + " " + this.state.essayData[docID].authorLastName}
                                                 </Typography>
-                                                <div>
+                                                <div style = {{marginBottom: "2%",}}>
                                                     <Typography style = {{ fontSize: 14,  }}>
                                                         {this.state.essayData[docID].description}
                                                     </Typography>

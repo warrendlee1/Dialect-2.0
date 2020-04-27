@@ -19,11 +19,10 @@ export default function ButtonAppBar() {
                         </Typography>
                     </a>
                     <div>
-                        <Button href="/" color = "inherit" variant = "h5">Home
-                        </Button>
+                        <Button href="/" color = "inherit" variant = "h5">Home</Button>
                         <Button href="/about" color = "inherit" variant = "h5">About</Button>
                         <Button href="/upload" color = "inherit" variant = "h5">Upload</Button>
-                        <Button href="/login" color="inherit"><FontAwesomeIcon icon={faUser} size = "1x" style = {{marginLeft: "1%",}}/></Button>
+                        <Button href="/profile" color="inherit"><FontAwesomeIcon icon={faUser} size = "1x" style = {{marginLeft: "1%",}}/></Button>
                     </div>
 
                 </Toolbar>

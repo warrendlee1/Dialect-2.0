@@ -1,7 +1,7 @@
 /**
  *  File name     :  Home.js
  *  @author       :  Warren Lee
- *  Date          :  4/29/20
+ *  Date          :  4/23/20
  *  Description   :  EssaySearch
  */
 

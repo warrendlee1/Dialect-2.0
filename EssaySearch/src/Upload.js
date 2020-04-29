@@ -26,7 +26,6 @@ export default class Upload extends React.Component{
 
     handleChange = key => e => {
         this.setState({[key]: e.target.value});
-        console.log(this.state);
     }
 
     addEssay = e => {
@@ -116,7 +115,6 @@ export default class Upload extends React.Component{
                     </Card>
                 </div>
             </div>
-
         )
     }
 }

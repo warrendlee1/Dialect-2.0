@@ -44,11 +44,9 @@ export default class SignIn extends React.Component {
 
     handleChange = key => e => {
         this.setState({[key]: e.target.value});
-        console.log(this.state);
     }
 
     validate( inputEmail, inputPassword) {
-        console.log("hi")
         firebase.auth().signInWithEmailAndPassword(inputEmail, inputPassword).then(this.loginUser).catch(function(error){
             let errorMessage = error.message;
             console.log(errorMessage)

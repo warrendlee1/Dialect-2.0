@@ -55,8 +55,6 @@ export default class Home extends React.Component{
         })
         this.feedData = docs;
         this.setState({essayData: this.feedData})
-        console.log("feedData")
-        console.log(this.feedData)
     }
 
     commentBoxChange(event) {
@@ -78,9 +76,6 @@ export default class Home extends React.Component{
             }
         );  
         this.feedData[this.state.currentFileId].comments.push({commenter: firebase.auth().currentUser.email, content: this.state.inputComment})
-        console.log(this.feedData[this.state.currentFileId].comments);
-        //revert the states to be empty
-        // let local = accessEssayData.collection("essay").doc(this.state.currentFileId);
         this.setState({
             inputComment: "",
             comments: "",

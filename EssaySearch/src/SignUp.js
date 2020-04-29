@@ -46,7 +46,6 @@ export default class SignUp extends React.Component {
 
     handleChange = key => e => {
         this.setState({[key]: e.target.value});
-        console.log(this.state);
     }
 
     createUser = e => {

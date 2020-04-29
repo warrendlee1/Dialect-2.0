@@ -31,7 +31,6 @@ export default function ButtonAppBar() {
                         <Button href="/upload" color = "inherit" variant = "h5">Upload</Button>
                         <Button href="/profile" color="inherit"><FontAwesomeIcon icon={faUser} size = "1x" style = {{marginLeft: "1%",}}/></Button>
                     </div>
-
                 </Toolbar>
             </AppBar>
         </div>

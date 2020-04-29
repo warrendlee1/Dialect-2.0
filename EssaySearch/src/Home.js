@@ -65,7 +65,6 @@ export default class Home extends React.Component{
     }
 
     // getDocComments
-
     postComment = e => {
         e.preventDefault();
         const accessEssayData = firebase.firestore();
@@ -84,11 +83,10 @@ export default class Home extends React.Component{
         // let local = accessEssayData.collection("essay").doc(this.state.currentFileId);
         this.setState({
             inputComment: "",
-            comments: "hi",
+            comments: "",
         });
         console.log("STATE COMMENTS: " + this.state.comments)
     };
-
 
     render() {
         if(this.state.currentFileId != null) {
@@ -222,7 +220,6 @@ export default class Home extends React.Component{
                                                         {this.state.essayData[docID].description}
                                                     </Typography>
                                                 </div>
-                                                {/* <Divider light style = {{width: "100%", marginTop: "auto", bottom: 0}}/> */}
                                             </div>
                                         </div>
                                     )) 

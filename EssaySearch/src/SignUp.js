@@ -63,7 +63,6 @@ export default class SignUp extends React.Component {
         });
     };
 
-
     render() {
         return (
             <Container component="main" maxWidth="xs" style = {{marginTop: "5%", marginRight: "40%"}}>
@@ -167,6 +166,5 @@ export default class SignUp extends React.Component {
                 </Box>
             </Container>
         );
-    }
-  
+    } 
 }

@@ -12,15 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import firebase from './firebase';
-// import { Redirect } from 'react-router-dom';
-
-
-
 
 export default class Profile extends React.Component{
-
-
-
     render() {
         return ( 
             <div style = {{backgroundColor: "#e8e8e8", height: "100%",position: "absolute",left: "0",width: "100%",overflow: "scroll"}}>

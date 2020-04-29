@@ -16,7 +16,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import firebase from './firebase';
-// import { Redirect, useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -30,7 +29,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 
 export default class SignIn extends React.Component {
     constructor(props) {
@@ -58,19 +56,7 @@ export default class SignIn extends React.Component {
     }
 
     loginUser(result) {
-        // let token = result.credential.accessToken;
-        let user = result.user;
         this.props.changeLoggedIn(true);
-
-        // firebase.auth().onAuthStateChanged(user => {
-        //     if(user) {
-        //       window.location = '/'; //After successful login, user will be redirected to home.html
-        //     }
-        // });
-
-        // console.log(token);
-        console.log(user);
-        // console.log("HHHHHHHHHHHHHHHH")
     }
 
     render() {
@@ -138,5 +124,4 @@ export default class SignIn extends React.Component {
             </Container>
         );
     }
-  
 }

@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 
 
 const config = {
-  apiKey: "*********************",
+  apiKey: "AIzaSyAGNaNHBI__Gzt9SL5bzVO6OkMBVHRx6Oo",
   authDomain: "essaysearch-7adb1.firebaseapp.com",
   databaseURL: "https://essaysearch-7adb1.firebaseio.com",
   storageBucket: "essaysearch-7adb1.appspot.com",

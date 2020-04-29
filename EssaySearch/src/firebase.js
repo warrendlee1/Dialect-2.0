@@ -1,5 +1,11 @@
-import * as firebase from 'firebase';
+/**
+ *  File name     :  App.js
+ *  @author       :  Warren Lee
+ *  Date          :  4/29/20
+ *  Description   :  EssaySearch
+ */
 
+import * as firebase from 'firebase';
 
 const config = {
   apiKey: "AIzaSyAGNaNHBI__Gzt9SL5bzVO6OkMBVHRx6Oo",

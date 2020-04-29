@@ -1,3 +1,10 @@
+/**
+ *  File name     :  App.js
+ *  @author       :  Warren Lee
+ *  Date          :  4/29/20
+ *  Description   :  EssaySearch
+ */
+
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';

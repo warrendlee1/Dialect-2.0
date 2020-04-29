@@ -1,3 +1,10 @@
+/**
+ *  File name     :  Upload.js
+ *  @author       :  Warren Lee
+ *  Date          :  4/29/20
+ *  Description   :  EssaySearch
+ */
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

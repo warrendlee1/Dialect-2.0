@@ -1,3 +1,10 @@
+/**
+ *  File name     :  Header.js
+ *  @author       :  Warren Lee
+ *  Date          :  4/29/20
+ *  Description   :  EssaySearch
+ */
+
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';

@@ -1,3 +1,10 @@
+/**
+ *  File name     :  SignUp.js
+ *  @author       :  Warren Lee
+ *  Date          :  4/29/20
+ *  Description   :  EssaySearch
+ */
+
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';

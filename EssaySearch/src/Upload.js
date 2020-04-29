@@ -37,6 +37,7 @@ export default class Upload extends React.Component{
             description: this.state.workDescription,
             fileContent: this.state.pdfFile,
             title: this.state.workTitle,
+            comments: [],
         });  
         //revert the states to be empty
         this.setState({

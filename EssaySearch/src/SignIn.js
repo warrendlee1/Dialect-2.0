@@ -63,7 +63,7 @@ export default class SignIn extends React.Component {
 
         // console.log(token);
         console.log(user);
-        console.log("HHHHHHHHHHHHHHHH")
+        // console.log("HHHHHHHHHHHHHHHH")
     }
 
     render() {

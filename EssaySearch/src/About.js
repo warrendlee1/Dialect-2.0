@@ -20,7 +20,7 @@ export default class About extends React.Component{
                                 </Typography>
                                 <Typography style = {{fontSize: 24, fontWeight: "bold" , marginBottom: "2%" ,}}>Team</Typography>
                                 <Typography style = {{fontSize: 20, }}>
-                                   Anacan M, Warren L, Mina H
+                                   Anacan, Warren, Mina
                                 </Typography>
                             </CardContent> 
                         </Card>

@@ -12,7 +12,7 @@ import Profile from './Profile';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import firebase from './firebase';
-import { faBoxTissue } from '@fortawesome/free-solid-svg-icons';
+// import { faBoxTissue } from '@fortawesome/free-solid-svg-icons';
 
  
 class App extends Component {
@@ -25,6 +25,7 @@ class App extends Component {
 
     this.setLoggedIn = this.setLoggedIn.bind(this);
     this.doRedirect = false;
+
   }
 
   componentDidMount() {
@@ -47,7 +48,7 @@ class App extends Component {
     console.log("doRedirect: " + this.doRedirect)
     if(this.doRedirect) {
       return(<Redirect to="/"/>);
-    }
+    } 
     this.doRedirect = false;
   }
 
@@ -68,9 +69,14 @@ class App extends Component {
                   </Toolbar>
               </AppBar>
             </div>
+            { () => {
+              this.handleRedirect()
+            }
+
+            }
             <Switch>
               <Route path="/signin" component={ () => <SignIn changeLoggedIn = {this.setLoginStatus}/>} exact/>
-              <Route path="/signup" component={SignUp} exact/>
+              <Route path="/signup" component={ () => <SignUp changeLoggedIn = {this.setLoginStatus}/>} exact/>
             </Switch>
         </div>
       </BrowserRouter>
@@ -78,16 +84,6 @@ class App extends Component {
         <BrowserRouter>
         <div>
             <Header/>
-            {/* { () => {
-                //console.log(this.state.doRedirect)
-                console.log("doRedirect: " + this.doRedirect)
-                if(this.doRedirect) {
-                  return(<Redirect to="/"/>);
-                }
-                this.doRedirect = false;
-                //this.setState({doRedirect: false});
-              }
-            } */}
             {
               this.handleRedirect()
             }
@@ -95,7 +91,7 @@ class App extends Component {
                 <Route path="/" component={Home} exact/>
                 <Route path="/about" component={About} exact/>
                 <Route path="/upload" component={Upload} exact/>
-                <Route path="/profile" component={Profile} exact/>
+                <Route path="/profile" component={() => <Profile changeLoggedIn = {this.setLoginStatus} />} exact/>
             </Switch>
 
         </div> 

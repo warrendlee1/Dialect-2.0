@@ -16,7 +16,7 @@ import firebase from './firebase';
 let localData = firebase.firestore();
 
 export default class Home extends React.Component{
-    constructor(){
+    constructor() {
         super()
         this.state = {
             currentFileId: null,
@@ -25,12 +25,10 @@ export default class Home extends React.Component{
             inputComment: null,
         }
         this.commentBoxChange = this.commentBoxChange.bind(this);
-        // this.postComment = this.postComment.bind(this); 
-
-        this.feedData = {};
-
+        this.postComment = this.postComment.bind(this); 
         this.getDocData = this.getDocData.bind(this)
 
+        this.feedData = {};
         localData.collection('essay')
         .get()
         .then(this.getDocData);
@@ -45,14 +43,13 @@ export default class Home extends React.Component{
                 description: doc.get("description"),
                 fileContent: doc.get("fileContent"),
                 title: doc.get("title"),
+                comments: doc.get("comments")
             }
         })
         this.feedData = docs;
         this.setState({essayData: this.feedData})
-        // feedData = docs;
         console.log("feedData")
         console.log(this.feedData)
-        // console.log(feedData);
     }
 
     commentBoxChange(event) {
@@ -60,20 +57,30 @@ export default class Home extends React.Component{
         console.log(this.state.inputComment);
     }
 
-    // postComment(event) {
-    //     event.preventDefault();
-    //     let feedDataPrevComments = feedData[this.state.currentFileId].comments;
-    //     if (feedDataPrevComments === null || feedDataPrevComments.length === 0) {
-    //         feedData[this.state.currentFileId].comments = [{commenter: "Warren Lee", content: this.state.inputComment}];
-    //     } else {
-    //         feedDataID[this.state.currentFileId].comments.push({commenter: "Warren Lee", content: this.state.inputComment})
-    //     }
-    //     this.setState({
-    //         inputComment: "",
-    //         comments: feedDataID[this.state.fileId].comments,
-    //     })
-    // }
+    // getDocComments
 
+    postComment = e => {
+        e.preventDefault();
+        const accessEssayData = firebase.firestore();
+        accessEssayData.settings({
+          timestampsInSnapshots: true
+        });
+        //access the firebase collections
+        accessEssayData.collection("essay").doc(this.state.currentFileId).update(
+            {
+                comments: firebase.firestore.FieldValue.arrayUnion({commenter: firebase.auth().currentUser.email, content: this.state.inputComment})
+            }
+        );  
+        this.feedData[this.state.currentFileId].comments.push({commenter: firebase.auth().currentUser.email, content: this.state.inputComment})
+        console.log(this.feedData[this.state.currentFileId].comments);
+        //revert the states to be empty
+        // let local = accessEssayData.collection("essay").doc(this.state.currentFileId);
+        this.setState({
+            inputComment: "",
+            comments: "hi",
+        });
+        console.log("STATE COMMENTS: " + this.state.comments)
+    };
 
 
     render() {
@@ -110,10 +117,10 @@ export default class Home extends React.Component{
                                     <div style = {{ flex: 1, height: "95%", display: "flex", flexDirection: "column", justifyContent: "space-between",}}>
                                         <List style = {{overflowY: 'scroll', marginBottom: "6%",}}> 
                                             {
-                                                this.state.comments == null ?
+                                                this.feedData[this.state.currentFileId].comments == null ?
                                                 null
                                                 :
-                                                (this.state.comments.map((comment) => (
+                                                (this.feedData[this.state.currentFileId].comments.map((comment) => (
                                                         <div>
                                                             <ListItem alignItems="flex-start">
                                                                 <ListItemText

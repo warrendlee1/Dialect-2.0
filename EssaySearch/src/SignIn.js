@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import firebase from './firebase';
-import { Redirect, useHistory } from 'react-router-dom';
+// import { Redirect, useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (

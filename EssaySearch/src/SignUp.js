@@ -46,6 +46,7 @@ export default class SignUp extends React.Component {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         //revert the states to be empty
+        this.props.changeLoggedIn(true);
         this.setState({
             email: "",
             password: "",

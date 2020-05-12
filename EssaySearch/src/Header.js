@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
                 <Toolbar style = {{marginLeft: "20%", marginRight: "20%", justifyContent:"space-between"}}>
                     <a href = "/" style = {{  textDecoration: "none", color: "inherit", display: "flex", flexDirection: "row", }}>
                         <Typography style = {{fontSize: 28, fontWeight:"bold", fontFamily:"Avenir" }}>
-                            Dialect
+                            Essay Search
                         </Typography>
                     </a>
                     <div>

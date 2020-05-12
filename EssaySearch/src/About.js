@@ -18,15 +18,13 @@ export default class About extends React.Component{
                     <div style = {{ width: "100%", height: "60%", marginTop: "1%",}}>
                         <Card style = {{height: "100%", overflowY: 'scroll'}}>
                             <CardContent style = {{marginLeft:"3%", marginTop: "2%", marginRight: "3%", }}>
-                                <Typography style = {{fontSize: 24, fontWeight: "bold" , marginBottom: "2%" ,}}>What is Dialect?</Typography>
+                                <Typography style = {{fontSize: 24, fontWeight: "bold" , marginBottom: "2%" ,}}>What is Essay Search?</Typography>
                                 <Typography style = {{fontSize: 20, marginBottom: "3%",  }}>
-                                    Dialect is a platform for thinkers to share and discuss their critical thoughts. 
-                                    In our society, thought too often is contained within the bounds of one’s environments, or worse, a platform that encourages quick, snappy responses. 
-                                    Dialect emphasizes moving away from this paradigm and towards provocative, thought-out responses that push significant ideas forward.
+                                    Essay Search finds new essays and thought-out ideas, and allows users to respond and view these new perspectives.
                                 </Typography>
                                 <Typography style = {{fontSize: 24, fontWeight: "bold" , marginBottom: "2%" ,}}>Team</Typography>
                                 <Typography style = {{fontSize: 20, }}>
-                                   Anacan, Warren, Mina
+                                   Warren Lee
                                 </Typography>
                             </CardContent> 
                         </Card>

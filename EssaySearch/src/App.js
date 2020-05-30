@@ -65,7 +65,7 @@ class App extends Component {
                   <Toolbar style = {{marginLeft: "20%", marginRight: "20%", justifyContent:"space-between"}}>
                       <div style = {{  textDecoration: "none", color: "inherit", display: "flex", flexDirection: "row", }}>
                           <Typography style = {{fontSize: 28, fontWeight:"bold", fontFamily:"Avenir" }}>
-                              Dialect
+                              Essay Search
                           </Typography>
                       </div>
                   </Toolbar>
@@ -83,7 +83,7 @@ class App extends Component {
         </div>
       </BrowserRouter>
       :
-        <BrowserRouter>
+      <BrowserRouter>
         <div>
             <Header/>
             {
